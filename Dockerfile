@@ -3,7 +3,7 @@
 #    $  docker build -f docs/development/docker/underworld2/Dockerfile .
 
 # MAINTAINER https://github.com/underworldcode/
-FROM longgangfan/ubuntu2004uwgeo:2021.5.8  as base_runtime
+FROM longgangfan/ubuntu2004uwgeo  as base_runtime
 # install runtime requirements
 USER root
 ENV PYVER=3.8
