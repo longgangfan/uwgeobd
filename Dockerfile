@@ -19,8 +19,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
 RUN PYTHONPATH= /usr/bin/pip3 install --no-cache-dir setuptools scons 
 # setup further virtualenv to avoid double copying back previous packages (h5py,mpi4py,etc)
 RUN /usr/bin/python3 -m virtualenv --system-site-packages --python=/usr/bin/python3 ${VIRTUAL_ENV}
-RUN mkdir /tmp/raw
-WORKDIR /tmp/raw
+WORKDIR /tmp/raw1
 RUN git config --global http.postBuffer 524288000
 RUN git clone --progress --verbose --single-branch --branch v2.11_release https://github.com/underworldcode/underworld2.git
 COPY --chown=longgangfan:users  ./underworld2  /tmp/underworld2
@@ -29,7 +28,7 @@ WORKDIR /tmp/underworld2
 RUN PATH=/usr/local/bin:$PATH
 RUN pip3 install --no-cache-dir -vvv .
 # clone UWGeodynamics, install 
-WORKDIR /tmp/raw
+WORKDIR /tmp/raw2
 RUN git config --global http.postBuffer 524288000
 RUN git clone --progress --verbose  --single-branch --branch development https://github.com/underworldcode/UWGeodynamics.git
 COPY --chown=longgangfan:users  ./UWGeodynamics  /tmp/UWGeodynamics
