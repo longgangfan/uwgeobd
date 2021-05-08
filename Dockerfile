@@ -22,7 +22,7 @@ RUN /usr/bin/python3 -m virtualenv --system-site-packages --python=/usr/bin/pyth
 RUN mkdir /tmp/raw
 WORKDIR /tmp/raw
 RUN git config --global http.postBuffer 524288000
-RUN git clone --progress --verbose --single-branch --branch v2.11_release https://github.com.cnpmjs.org/underworldcode/underworld2.git
+RUN git clone --progress --verbose --single-branch --branch v2.11_release https://github.com/underworldcode/underworld2.git
 COPY --chown=longgangfan:users  ./underworld2  /tmp/underworld2
 WORKDIR /tmp/underworld2
 # RUN git checkout v2.11_release
@@ -31,7 +31,7 @@ RUN pip3 install --no-cache-dir -vvv .
 # clone UWGeodynamics, install 
 WORKDIR /tmp/raw
 RUN git config --global http.postBuffer 524288000
-RUN git clone --progress --verbose  --single-branch --branch development https://github.com.cnpmjs.org/underworldcode/UWGeodynamics.git
+RUN git clone --progress --verbose  --single-branch --branch development https://github.com/underworldcode/UWGeodynamics.git
 COPY --chown=longgangfan:users  ./UWGeodynamics  /tmp/UWGeodynamics
 WORKDIR /tmp/UWGeodynamics
 # RUN git checkout development
