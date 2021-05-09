@@ -38,6 +38,7 @@ FROM base_runtime
 COPY --from=build_base ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 # Record Python packages, but only record system packages! 
 # Not venv packages, which will be copied directly in.
+RUN pip3 uninstall setuptools --yes
 RUN PYTHONPATH= /usr/bin/pip3 freeze >/opt/requirements.txt
 # Record manually install apt packages.
 RUN apt-mark showmanual >/opt/installed.txt
