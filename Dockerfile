@@ -33,7 +33,8 @@ RUN git clone --progress --verbose  --single-branch --branch development https:/
 WORKDIR /tmp/UWGeodynamics
 # RUN git checkout development
 RUN pip3 install --no-cache-dir -vvv  .
-RUN pip3 install -U badlands
+RUN pip3 install -U --no-cache-dir badlands
+RUN pip3 install --no-cache-dir setuptools --force-reinstall
 FROM base_runtime
 COPY --from=build_base ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 # Record Python packages, but only record system packages! 
