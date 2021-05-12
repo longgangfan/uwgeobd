@@ -55,4 +55,4 @@ RUN  chown -R  longgangfan:users /home/longgangfan/workspace /home/longgangfan/U
 RUN jupyter serverextension enable --sys-prefix jupyter_server_proxy
 USER $NB_USER
 WORKDIR $NB_WORK
-CMD ["jupyter", "lab"]
+CMD ["jupyter", "notebook", "--no-browser", "--ip='0.0.0.0'"]
