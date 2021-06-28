@@ -16,7 +16,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
         python3-dev \
         swig \
         libxml2-dev
-RUN PYTHONPATH= /usr/bin/pip3 install --no-cache-dir --exists-action w setuptools scons --upgrade --force-reinstall
+RUN PYTHONPATH= /usr/bin/pip3 install --no-cache-dir --exists-action w setuptools scons --upgrade --force-reinstall \
+&&  CC=h5pcc HDF5_MPI="ON" HDF5_DIR=/usr/local  pip3 install --no-cache-dir --no-binary=h5py h5py==3.2.1
 # setup further virtualenv to avoid double copying back previous packages (h5py,mpi4py,etc)
 RUN /usr/bin/python3 -m virtualenv --system-site-packages --python=/usr/bin/python3 ${VIRTUAL_ENV}
 WORKDIR /tmp
