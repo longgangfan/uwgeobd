@@ -32,9 +32,12 @@ WORKDIR /tmp
 RUN git config --global http.postBuffer 524288000
 RUN git clone --progress --verbose  --single-branch --branch development https://github.com/underworldcode/UWGeodynamics.git
 WORKDIR /tmp/UWGeodynamics
-# RUN git checkout development
 RUN pip3 install --no-cache-dir -vvv  .
-RUN pip3 install -U --no-cache-dir badlands
+WORKDIR /tmp
+RUN git clone --progress --verbose  --single-branch --branch uwtest https://github.com/badlands-model/badlands.git
+WORKDIR /tmp/badlands
+RUN pip3 install --no-cache-dir -vvv  .
+## RUN pip3 install -U --no-cache-dir badlands
 RUN pip3 install -U --no-cache-dir badlands-companion
 RUN pip3 install --no-cache-dir setuptools --force-reinstall
 FROM base_runtime
